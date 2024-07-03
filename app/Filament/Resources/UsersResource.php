@@ -48,12 +48,7 @@ class UsersResource extends Resource
                     ->label('Password')
                     ->password()
                     ->required()
-                    ->confirmed()
-                    ->revealable(),
-                TextInput::make('password-confirmation')
-                    ->label('Password Confirmation')
-                    ->password()
-                    ->required()
+                    ->columnSpanFull()
                     ->revealable(),
             ]);
     }

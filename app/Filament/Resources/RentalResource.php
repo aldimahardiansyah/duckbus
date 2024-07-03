@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -45,6 +46,7 @@ class RentalResource extends Resource
                     'unpaid' => 'Unpaid',
                     'paid' => 'Paid',
                 ])->required(),
+                TextInput::make('total_amount')->required()->numeric()->mask(RawJs::make('$money($input)'))->stripCharacters(',')->prefix('Rp'),
             ]);
     }
 
@@ -64,6 +66,7 @@ class RentalResource extends Resource
                     'approved' => 'success',
                     'declined' => 'danger',
                 }),
+                TextColumn::make('total_amount')->searchable()->money('IDR'),
                 TextColumn::make('payment_status')->searchable()->color(fn (string $state): string => match ($state) {
                     'unpaid' => 'danger',
                     'paid' => 'success',

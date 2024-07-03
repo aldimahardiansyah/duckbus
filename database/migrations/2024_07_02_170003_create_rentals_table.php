@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('pickup_time')->nullable();
             $table->string('status')->default('pending'); // pending, approved, declined
             $table->string('payment_status')->default('unpaid'); // unpaid, paid
+            $table->decimal('total_amount', 10, 2)->default(0.00);
             $table->string('pickup_location');
             $table->string('destination');
             $table->timestamps();
