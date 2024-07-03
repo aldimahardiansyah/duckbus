@@ -42,7 +42,7 @@ class BusManagementResource extends Resource
                     'manual' => 'Manual',
                 ]),
                 Select::make('fuel_type')->options([
-                    'petrol' => 'Petrol',
+                    'Bensin' => 'Bensin',
                     'diesel' => 'Diesel',
                     'electric' => 'Electric',
                 ]),
@@ -68,13 +68,13 @@ class BusManagementResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('transmission')->options([
-                    'automatic' => 'Automatic',
-                    'manual' => 'Manual',
+                    'Automatic' => 'Automatic',
+                    'Manual' => 'Manual',
                 ]),
                 SelectFilter::make('fuel_type')->options([
-                    'petrol' => 'Petrol',
-                    'diesel' => 'Diesel',
-                    'electric' => 'Electric',
+                    'Bensin' => 'Bensin',
+                    'Diesel' => 'Diesel',
+                    'Electric' => 'Electric',
                 ]),
                 SelectFilter::make('facilities')->relationship('facilities', 'name')->multiple()->preload(),
             ])
