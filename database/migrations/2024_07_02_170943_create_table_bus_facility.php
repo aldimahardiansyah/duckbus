@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_bus_facility', function (Blueprint $table) {
+        Schema::create('bus_facility', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('bus_id');
+            $table->foreignId('facility_id');
             $table->timestamps();
         });
     }
