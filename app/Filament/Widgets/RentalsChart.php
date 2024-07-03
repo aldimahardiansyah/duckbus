@@ -13,6 +13,14 @@ class RentalsChart extends ChartWidget
 
     protected static ?string $maxHeight = '300px';
 
+    protected static ?array $options = [
+        'plugins' => [
+            'legend' => [
+                'display' => false,
+            ],
+        ],
+    ];
+
     protected function getData(): array
     {
         $data = [
@@ -31,7 +39,7 @@ class RentalsChart extends ChartWidget
         ];
 
         // get count of rentals for each month
-        $rentals = Rental::all();
+        $rentals = Rental::whereYear('start_date', $this->filter ?? now()->year)->get();
 
         foreach ($rentals as $rental) {
             $month = $rental->created_at->format('F');
@@ -54,5 +62,14 @@ class RentalsChart extends ChartWidget
     protected function getType(): string
     {
         return 'line';
+    }
+
+    protected function getFilters(): ?array
+    {
+        return [
+            now()->year => now()->year,
+            now()->subYear()->year => now()->subYear()->year,
+            now()->subYears(2)->year => now()->subYears(2)->year,
+        ];
     }
 }

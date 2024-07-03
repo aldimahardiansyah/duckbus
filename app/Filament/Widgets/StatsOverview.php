@@ -15,6 +15,7 @@ class StatsOverview extends BaseWidget
             Stat::make('Total Buses', Bus::count()),
             Stat::make('Total Rentals', Rental::count()),
             Stat::make('Total Customers', Rental::distinct('user_id')->count('user_id')),
+            Stat::make('Total Revenue', 'Rp ' . number_format(Rental::sum('total_amount'))),
         ];
     }
 }
