@@ -67,13 +67,13 @@ class RentalResource extends Resource
                     'declined' => 'danger',
                 }),
                 TextColumn::make('total_amount')->searchable()->money('IDR'),
-                TextColumn::make('payment_status')->searchable()->color(fn (string $state): string => match ($state) {
-                    'unpaid' => 'danger',
-                    'paid' => 'success',
-                })->icon(fn (string $state): string => match ($state) {
-                    'unpaid' => 'heroicon-c-x-circle',
-                    'paid' => 'heroicon-m-check-circle',
-                }),
+                // TextColumn::make('payment_status')->searchable()->color(fn (string $state): string => match ($state) {
+                //     'unpaid' => 'danger',
+                //     'paid' => 'success',
+                // })->icon(fn (string $state): string => match ($state) {
+                //     'unpaid' => 'heroicon-c-x-circle',
+                //     'paid' => 'heroicon-m-check-circle',
+                // }),
             ])
             ->filters([
                 SelectFilter::make('status')->options([

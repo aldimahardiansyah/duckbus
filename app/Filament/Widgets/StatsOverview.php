@@ -9,6 +9,11 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class StatsOverview extends BaseWidget
 {
+    public static function canAccess(): bool
+    {
+        return auth()->user()->role->name === 'admin';
+    }
+
     protected function getStats(): array
     {
         return [
